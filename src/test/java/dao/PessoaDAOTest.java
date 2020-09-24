@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import domain.Pessoa;
-import util.CpfUtil;
+import util.StringUtils;
 
 class PessoaDAOTest {
 
@@ -16,7 +16,7 @@ class PessoaDAOTest {
 	@ValueSource(strings = { "\n\n003\n005\n006\n007\n009\n010", "003\n005\n006\n007\n009\n010\n\n\n",
 			"003\n005\n006\n007\n009\n010", "\n\n\n\n003\n005\n006\n007\n009\n010\n\n\n\n\n" })
 	void testBuscarPorListaDeCPF(String listaDeCpf) {
-		String listaFormatada = CpfUtil.ajustarListaDeCpf(listaDeCpf);
+		String listaFormatada = StringUtils.formatarListaDeCpf(listaDeCpf);
 		PessoaDAO dao = new PessoaDAO();
 		List<Pessoa> pessoas = dao.buscarPorListaDeCPF(listaFormatada);
 		Integer[] arrayIds = new Integer[pessoas.size()];
