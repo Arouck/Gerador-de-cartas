@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 import domain.Pessoa;
 
 public class PessoaUtil {
-
-	public static List<Pessoa> preencherUF(List<Pessoa> pessoas) {
+	
+	public static List<Pessoa> formatarEnderecoCompleto(List<Pessoa> pessoas) {
 		pessoas = PessoaUtil.formatarCep(pessoas);
 		List<Boolean> validador = new ArrayList<>();
 		List<String> ceps = new ArrayList<>();
@@ -24,14 +24,20 @@ public class PessoaUtil {
 			}
 			ceps.add(pessoa.getCep());
 		}
-
+		
 		List<String> enderecosJson = ClienteViaCepWS.buscarCep(ceps, validador);
-
 		List<Map<String, String>> enderecosFormatados = PessoaUtil.formatarJsonViaCep(enderecosJson);
 
+		pessoas = formatarBairro(pessoas, enderecosFormatados);
+		pessoas = preencherUF(pessoas, enderecosFormatados);
+		
+		return pessoas;
+	}
+
+	public static List<Pessoa> preencherUF(List<Pessoa> pessoas, List<Map<String, String>> enderecosViaCep) {
 		for (int i = 0; i < pessoas.size(); i++) {
-			if (enderecosFormatados.get(i) != null && !enderecosFormatados.get(i).isEmpty()) {
-				pessoas.get(i).setUf(enderecosFormatados.get(i).get("uf"));
+			if (enderecosViaCep.get(i) != null && !enderecosViaCep.get(i).isEmpty()) {
+				pessoas.get(i).setUf(enderecosViaCep.get(i).get("uf"));
 			}
 		}
 
