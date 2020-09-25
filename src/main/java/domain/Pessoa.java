@@ -41,6 +41,21 @@ public class Pessoa extends GenericDomain {
 	@Transient
 	private String mensagemErro;
 
+	public Pessoa() {
+	}
+
+	public Pessoa(String nome, String cep, String endereco, String complemento, String numeroendereco,
+			String bairro, String cidade, String uf) {
+		this.nome = nome;
+		this.endereco = endereco;
+		this.cep = cep;
+		this.numeroendereco = numeroendereco;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.complemento = complemento;
+		this.uf = uf;
+	}
+
 	public String getCep() {
 		return cep;
 	}
