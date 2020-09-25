@@ -1,9 +1,6 @@
 package util;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -15,13 +12,13 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import controller.FileController;
 import domain.Pessoa;
 
 public class XLSXUtil {
 	
 	private static final String[] columns = { "Nome", "CEP", "Logradouro", "Complemento", "Numero", "Bairro", "Cidade",
 			"Estado", "Menssagem de Erro" };
-	private static final LocalDate date = LocalDate.now();
 	
 	public static void gerarTabelaExcel(List<Pessoa> pessoas) throws IOException {
 		Workbook workbook = new XSSFWorkbook();
@@ -72,20 +69,7 @@ public class XLSXUtil {
 			sheet.autoSizeColumn(j);
 		}
 		
-		File file = new File("C:\\Users\\pvito\\Documents\\Tabela " + date.getYear() + " " + date.getMonth() + ".xlsx");
-
-		if (file.exists()) {
-			FileOutputStream fileOutput = new FileOutputStream(
-					"C:\\Users\\pvito\\Documents\\Tabela " + date.getYear() + " " + date.getMonth() + "(1).xlsx");
-			workbook.write(fileOutput);
-			fileOutput.close();
-		} else {
-			FileOutputStream fileOutput = new FileOutputStream(file);
-			workbook.write(fileOutput);
-			fileOutput.close();
-		}
-		
-		workbook.close();
+		FileController.saveXLSXFile(workbook);
 		
 	}
 
