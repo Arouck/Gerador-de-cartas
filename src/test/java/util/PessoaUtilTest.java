@@ -47,13 +47,20 @@ class PessoaUtilTest {
 		}
 		assertArrayEquals(esperado, recebido);
 	}
-
+	
 	@ParameterizedTest
 	@ValueSource(strings = { "\n\n\n\n003\n005\n006\n007\n\n\n\n", "003\n005\n006\n007\n\n\n\n",
 			"\n\n\n\n003\n005\n006\n007", "003\n005\n006\n007" })
 	public void testFormatarListaDeCpf(String listaDeCpf) {
 		String novaLista = PessoaUtil.formatarListaDeCpf(listaDeCpf);
 		assertTrue("'003','005','006','007'".equals(novaLista));
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = { "003\r\n004\r\n005\r\n006\r\n007\r\n008\r\n009\r\n010\r\n011" })
+	public void testFormatarListaDeCpf2(String listaDeCpf) {
+		String novaLista = PessoaUtil.formatarListaDeCpf(listaDeCpf);
+		assertTrue("'003','004','005','006','007','008','009','010','011'".equals(novaLista));
 	}
 
 	@ParameterizedTest
