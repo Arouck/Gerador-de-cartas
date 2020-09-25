@@ -20,12 +20,11 @@ class PessoaUtilTest {
 		PessoaDAO dao = new PessoaDAO();
 		List<Pessoa> pessoas = dao.buscarPorListaDeCPF(listaFormatada);
 		pessoas = PessoaUtil.preencherUF(pessoas);
-		String[] esperado = { "PA", "AC", "SP", "SP", "MG" };
+		String[] esperado = { "PA", "AC", "SP", "SP", null };
 		String[] recebido = new String[pessoas.size()];
 		for (int i = 0; i < pessoas.size(); i++) {
 			recebido[i] = pessoas.get(i).getUf();
 		}
-		System.out.println(pessoas.toString());
 		assertArrayEquals(esperado, recebido);
 	}
 
