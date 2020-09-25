@@ -64,4 +64,41 @@ public class Pessoa extends GenericDomain {
 	public void setMensagemErro(String mensagemErro) {
 		this.mensagemErro = mensagemErro;
 	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getNumeroendereco() {
+		return numeroendereco;
+	}
+
+	public void setNumeroendereco(String numeroendereco) {
+		this.numeroendereco = numeroendereco;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
 }
