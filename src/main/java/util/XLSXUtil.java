@@ -1,6 +1,10 @@
 package util;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -10,6 +14,7 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import controller.FileController;
@@ -71,6 +76,37 @@ public class XLSXUtil {
 		
 		FileController.saveXLSXFile(workbook);
 		
+	}
+	
+	public static List<Pessoa> lerArquivoXLSX() throws IOException {
+		List<Pessoa> pessoas = new ArrayList<>();
+		
+		File file = FileController.openXLSXFile();
+		FileInputStream fileInput = new FileInputStream(file);
+
+		XSSFWorkbook workbook = new XSSFWorkbook(fileInput);
+		XSSFSheet sheet = workbook.getSheetAt(0);
+
+		Iterator<Row> rows = sheet.iterator();
+
+		rows.next();
+
+		while (rows.hasNext()) {
+			Row row = rows.next();
+
+			Iterator<Cell> cells = row.cellIterator();
+
+			Pessoa pessoa = new Pessoa(cells.next().toString(), cells.next().toString(),
+					cells.next().toString(), cells.next().toString(), cells.next().toString(), cells.next().toString(),
+					cells.next().toString(), cells.next().toString());
+
+			pessoas.add(pessoa);
+		}
+
+		workbook.close();
+		fileInput.close();
+
+		return pessoas;
 	}
 
 }
