@@ -26,7 +26,7 @@ class XLSXUtilTest {
 			String listaFormatada = PessoaUtil.formatarListaDeCpf(cpfs);
 			PessoaDAO dao = new PessoaDAO();
 			List<Pessoa> pessoas = dao.buscarPorListaDeCPF(listaFormatada);
-			pessoas = PessoaUtil.preencherUF(pessoas);
+			pessoas = PessoaUtil.formatarEnderecoCompleto(pessoas);
 			XLSXUtil.gerarTabelaExcel(pessoas);
 			File file1 = new File(
 					"C:\\Users\\pvito\\Documents\\Tabela " + date.getYear() + " " + date.getMonth() + ".xlsx");
