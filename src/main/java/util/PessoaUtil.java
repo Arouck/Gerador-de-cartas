@@ -12,7 +12,7 @@ public class PessoaUtil {
 		pessoas = StringUtils.formatarCep(pessoas);
 		List<Boolean> validador = new ArrayList<>();
 		List<String> ceps = new ArrayList<>();
-		
+
 		for (Pessoa pessoa : pessoas) {
 			if (pessoa.getMensagemErro() != null) {
 				validador.add(false);
@@ -21,17 +21,17 @@ public class PessoaUtil {
 			}
 			ceps.add(pessoa.getCep());
 		}
-		
+
 		List<String> enderecosJson = ClienteViaCepWS.buscarCep(ceps, validador);
-		
+
 		List<Map<String, String>> enderecosFormatados = StringUtils.formatarEndereco(enderecosJson);
-		
+
 		for (int i = 0; i < pessoas.size(); i++) {
-			if (!enderecosFormatados.get(i).isEmpty()) {
+			if (enderecosFormatados.get(i) != null && !enderecosFormatados.get(i).isEmpty()) {
 				pessoas.get(i).setUf(enderecosFormatados.get(i).get("uf"));
 			}
 		}
-		
+
 		return pessoas;
 	}
 }
