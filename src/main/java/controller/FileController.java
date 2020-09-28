@@ -12,7 +12,7 @@ public class FileController {
 
 	public static void saveXLSXFile(Workbook workbook) {
 		FileDialog fileDialog = new FileDialog(new Frame(), "Salvar", FileDialog.SAVE);
-		fileDialog.setFile("*.xlsx;*xls");
+		fileDialog.setFile("*.xlsx;*.xls");
 		fileDialog.setVisible(true);
 		File file = null;
 		String path = "";
@@ -33,6 +33,21 @@ public class FileController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static String savePDFFile() {
+		FileDialog fileDialog = new FileDialog(new Frame(), "Salvar", FileDialog.SAVE);
+		fileDialog.setFile("*.pdf");
+		fileDialog.setVisible(true);
+		String path = "";
+		
+		if (!fileDialog.getFiles()[0].getAbsolutePath().endsWith(".pdf")) {
+			path = fileDialog.getFiles()[0].getAbsolutePath() + ".pdf";
+		} else {
+			path = fileDialog.getFiles()[0].getAbsolutePath();
+		}
+
+		return path;
 	}
 	
 	public static File openXLSXFile() {
