@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+* {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ui-layout-unit .ui-layout-unit-content {
+	padding: 0;
+	overflow: hidden;
+}
+
+.ui-widget-content {
+	background: transparent;
+	border: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ui-button .ui-button-text {
+	color: #0F4C75;
+	font-size: 18px;
+	background: #BBE1FA;
+	border-radius: .2em;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	background: none;
+	border: none;
+	text-shadow: none;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active,
+	.ui-widget-header .ui-state-active, .ui-button .ui-button-text:active {
+	color: #083959;
+	background: #a6dcff;
+}
+
+body {
+	background-color: #1B262C;
+}
+
+#cabecalhoH3 {
+	color: #3282B8;
+	margin-top: 10vh;
+	font-size: 2em;
+}
+
+#containerForm {
+	background-color: #0F4C75;
+	height: 30vh;
+	width: 60vh;
+	border-radius: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
