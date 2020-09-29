@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:insert name="metadata" />
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Gerador de cartas</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="style.css" />
+	<ui:insert name="css" />
+	<p:growl id="msgGlobal" />
+
+	<p:layout fullPage="true" >
+		<p:layoutUnit position="north" closable="false" collapsible="false"
+			resizable="false" id="layoutNorte" >
+			<h3 id="cabecalhoH3" >
+				<ui:insert name="cabecalho" />
+			</h3>
+		</p:layoutUnit>
+		<p:layoutUnit position="center" closable="false" collapsible="false"
+			resizable="false"  id="layout">
+			<div id="containerForm">
+				<h:form id="formPrincipal" >
+					<ui:insert name="conteudoForm" />
+				</h:form>
+			</div>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>
