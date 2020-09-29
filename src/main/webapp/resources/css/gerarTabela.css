@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#containerForm {
+	background-color: #0F4C75;
+	height: 60vh;
+	width: 60vh;
+	border-radius: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default .inputCPFs {
+	background: #BBE1FA;
+}
+
+.containerBotao {
+	display: flex;
+	justify-content: center;
+	margin-top: 5%;
+}
