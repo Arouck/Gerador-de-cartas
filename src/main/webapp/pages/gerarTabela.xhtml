@@ -18,10 +18,13 @@
 		
 		<ui:define name="conteudoForm">
 			<div class="containerTextArea">
-				<p:inputTextarea class="inputCPFs" rows="20" cols="50" />			
+				<p:inputTextarea class="inputCPFs" rows="20" cols="50"
+					value="#{gerarTabelaBean.listaDeCpf}" />			
 			</div>
 			<div class="containerBotao">
-				<p:commandButton value="Gerar Tabela" />
+				<p:commandButton value="Gerar Tabela"
+					action="#{gerarTabelaBean.gerarTabela()}"
+					update=":msgGlobal" ajax="false" />
 			</div>
 		</ui:define>
 	</ui:composition>
