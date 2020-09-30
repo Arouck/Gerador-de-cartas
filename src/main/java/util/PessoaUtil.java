@@ -58,7 +58,9 @@ public class PessoaUtil {
 
 	public static String formatarListaDeCpf(String cpfs) {
 		String listaDeCpf = cpfs.trim();
-		return "'" + listaDeCpf.replaceAll("\\R", "','") + "'";
+		listaDeCpf = "'" + listaDeCpf.replaceAll("\\R", "','") + "'";
+		listaDeCpf = listaDeCpf.replaceAll("\\.", "").replaceAll("-", "");
+		return listaDeCpf;
 	}
 
 	public static List<Map<String, String>> formatarJsonViaCep(List<String> enderecosJson) {
