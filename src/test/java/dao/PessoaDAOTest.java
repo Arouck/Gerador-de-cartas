@@ -13,8 +13,10 @@ import util.PessoaUtil;
 class PessoaDAOTest {
 
 	@ParameterizedTest
-	@ValueSource(strings = { "\n\n003\n005\n006\n007\n009\n010", "003\n005\n006\n007\n009\n010\n\n\n",
-			"003\n005\n006\n007\n009\n010", "\n\n\n\n003\n005\n006\n007\n009\n010\n\n\n\n\n" })
+	@ValueSource(strings = { "\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41",
+			"326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41\n\n\n",
+			"326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41",
+			"\n\n\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41\n\n\n\n\n" })
 	void testBuscarPorListaDeCPF(String listaDeCpf) {
 		String listaFormatada = PessoaUtil.formatarListaDeCpf(listaDeCpf);
 		PessoaDAO dao = new PessoaDAO();
@@ -29,7 +31,8 @@ class PessoaDAOTest {
 	
 	
 	@ParameterizedTest
-	@ValueSource(strings = { "003\r\n004\r\n005\r\n006\r\n007\r\n008\r\n009\r\n010\r\n011" })
+	@ValueSource(strings = {
+			"326.377.490-59\r\n844.930.270-61\r\n573.091.250-10\r\n711.490.570-09\r\n690.627.240-35\r\n604.421.100-22\r\n435.608.320-20\r\n158.502.990-41\r\n059.424.960-05" })
 	void testBuscarPorListaDeCPF2(String listaDeCpf) {
 		String listaFormatada = PessoaUtil.formatarListaDeCpf(listaDeCpf);
 		PessoaDAO dao = new PessoaDAO();
