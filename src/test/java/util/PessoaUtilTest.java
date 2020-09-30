@@ -16,8 +16,8 @@ import domain.Pessoa;
 class PessoaUtilTest {
 
 	@ParameterizedTest
-	@ValueSource(strings = { "\n\n003\n005\n006\n007\n009\n010", "003\n005\n006\n007\n009\n010\n\n\n",
-			"003\n005\n006\n007\n009\n010", "\n\n\n\n003\n005\n006\n007\n009\n010\n\n\n\n\n" })
+	@ValueSource(strings = { "\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41", "326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41\n\n\n",
+			"326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41", "\n\n\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n435.608.320-20\n158.502.990-41\n\n\n\n\n" })
 	public void testPreencherUF(String listaDeCpf) {
 		String listaFormatada = PessoaUtil.formatarListaDeCpf(listaDeCpf);
 		PessoaDAO dao = new PessoaDAO();
@@ -49,18 +49,18 @@ class PessoaUtilTest {
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = { "\n\n\n\n003\n005\n006\n007\n\n\n\n", "003\n005\n006\n007\n\n\n\n",
-			"\n\n\n\n003\n005\n006\n007", "003\n005\n006\n007" })
+	@ValueSource(strings = { "\n\n\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n\n\n\n", "326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n\n\n\n",
+			"\n\n\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35", "326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35" })
 	public void testFormatarListaDeCpf(String listaDeCpf) {
 		String novaLista = PessoaUtil.formatarListaDeCpf(listaDeCpf);
-		assertTrue("'003','005','006','007'".equals(novaLista));
+		assertTrue("'32637749059','57309125010','71149057009','69062724035'".equals(novaLista));
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = { "003\r\n004\r\n005\r\n006\r\n007\r\n008\r\n009\r\n010\r\n011" })
+	@ValueSource(strings = { "326.377.490-59\r\n844.930.270-61\r\n573.091.250-10\r\n711.490.570-09\r\n690.627.240-35\r\n604.421.100-22\r\n435.608.320-20\r\n158.502.990-41\r\n059.424.960-05" })
 	public void testFormatarListaDeCpf2(String listaDeCpf) {
 		String novaLista = PessoaUtil.formatarListaDeCpf(listaDeCpf);
-		assertTrue("'003','004','005','006','007','008','009','010','011'".equals(novaLista));
+		assertTrue("'32637749059','84493027061','57309125010','71149057009','69062724035','60442110022','43560832020','15850299041','05942496005'".equals(novaLista));
 	}
 
 	@ParameterizedTest
@@ -79,8 +79,8 @@ class PessoaUtilTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "\n\n\n\n003\n005\n006\n007\n\n\n\n", "003\n005\n006\n007\n\n\n\n",
-			"\n\n\n\n003\n005\n006\n007", "003\n005\n006\n007" })
+	@ValueSource(strings = { "\n\n\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n\n\n\n", "326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35\n\n\n\n",
+			"\n\n\n\n326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35", "326.377.490-59\n573.091.250-10\n711.490.570-09\n690.627.240-35" })
 	public void testFormatarCepECpf(String listaDeCpf) {
 		PessoaDAO dao = new PessoaDAO();
 		List<Pessoa> pessoas = dao.buscarPorListaDeCPF(PessoaUtil.formatarListaDeCpf(listaDeCpf));
@@ -94,7 +94,8 @@ class PessoaUtilTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "003\r\n004\r\n005\r\n006\r\n007\r\n008\r\n009\r\n010\r\n011" })
+	@ValueSource(strings = {
+			"326.377.490-59\r\n844.930.270-61\r\n573.091.250-10\r\n711.490.570-09\r\n690.627.240-35\r\n604.421.100-22\r\n435.608.320-20\r\n158.502.990-41\r\n059.424.960-05" })
 	void testPreencherEnderecoCompleto(String cpfs) {
 		String listaFormatada = PessoaUtil.formatarListaDeCpf(cpfs);
 		PessoaDAO dao = new PessoaDAO();
