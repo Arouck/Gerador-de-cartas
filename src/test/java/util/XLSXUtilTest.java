@@ -20,7 +20,8 @@ import domain.Pessoa;
 class XLSXUtilTest {
 
 	@ParameterizedTest
-	@ValueSource(strings = { "003\r\n004\r\n005\r\n006\r\n007\r\n008\r\n009\r\n010\r\n011" })
+	@ValueSource(strings = {
+			"326.377.490-59\r\n844.930.270-61\r\n573.091.250-10\r\n711.490.570-09\r\n690.627.240-35\r\n604.421.100-22\r\n435.608.320-20\r\n158.502.990-41\r\n059.424.960-05" })
 	void testGerarTabelaExcel(String cpfs) {
 		try {
 			LocalDate date = LocalDate.now();
@@ -29,7 +30,7 @@ class XLSXUtilTest {
 			PessoaDAO dao = new PessoaDAO();
 			List<Pessoa> pessoas = dao.buscarPorListaDeCPF(listaFormatada);
 			pessoas = PessoaUtil.formatarEnderecoCompleto(pessoas);
-			XLSXUtil.gerarTabelaExcel(pessoas);
+			XLSXUtil.gerarTabelaExcelFileDialog(pessoas);
 			File file1 = new File(
 					"C:\\Users\\pvito\\Documents\\Tabela " + date.getYear() + " " + date.getMonth() + ".xlsx");
 
