@@ -17,17 +17,14 @@
 	<ui:insert name="css" />
 	<p:growl id="msgGlobal" />
 
-	<p:layout fullPage="true" >
-		<p:layoutUnit position="north" closable="false" collapsible="false"
-			resizable="false" id="layoutNorte" >
-			<h3 id="cabecalhoH3" >
-				<ui:insert name="cabecalho" />
-			</h3>
-		</p:layoutUnit>
+	<h:form>
+		<ui:insert name="cabecalho" />
+	</h:form>
+	<p:layout>
 		<p:layoutUnit position="center" closable="false" collapsible="false"
-			resizable="false"  id="layout">
+			resizable="false" id="layout">
 			<div id="containerForm">
-				<h:form id="formPrincipal" >
+				<h:form id="formPrincipal" enctype="multipart/form-data">
 					<ui:insert name="conteudoForm" />
 				</h:form>
 			</div>
