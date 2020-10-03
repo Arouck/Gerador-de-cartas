@@ -22,7 +22,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 		}
 	}
 
-	public Usuario buscarPorUsuario(String username) {
+	/*public Usuario buscarPorUsuario(String username) {
 		try {
 			if (!em.isOpen()) {
 				instanciarEm();
@@ -40,9 +40,9 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 		} finally {
 			fecharSessao();
 		}
-	}
+	}*/
 
-	public Usuario buscarPorUsuarioAutenticar(String username) {
+	public Usuario buscarPorUsuario(String username) {
 		try {
 			if (!em.isOpen()) {
 				instanciarEm();
@@ -51,13 +51,10 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 			Usuario usuario = (Usuario) em
 					.createQuery("FROM " + Usuario.class.getName() + " WHERE username = '" + username + "'")
 					.getSingleResult();
-			Usuario newUsuario = new Usuario(usuario.getUsername(), usuario.getSenha(), null, usuario.getSalt());
-			return newUsuario;
+			return usuario;
 		} catch (RuntimeException ex) {
-			if (em.getTransaction() != null) {
-				fazerRollback();
-			}
-			throw ex;
+			ex.printStackTrace();
+			return null;
 		} finally {
 			fecharSessao();
 		}
