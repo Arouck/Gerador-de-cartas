@@ -16,23 +16,23 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.omnifaces.util.Faces;
 
 public class FileController {
-	
+
 	public static void saveXLSXFileDialog(Workbook workbook) throws IOException {
 		FileDialog fileDialog = new FileDialog(new Frame(), "Salvar", FileDialog.SAVE);
 		fileDialog.setFile("*.xlsx;*.xls");
 		fileDialog.setVisible(true);
-		
+
 		File file = null;
 		String path = "";
-		
-		if (!fileDialog.getFiles()[0].getAbsolutePath().endsWith(".xlsx")) {		
+
+		if (!fileDialog.getFiles()[0].getAbsolutePath().endsWith(".xlsx")) {
 			path = fileDialog.getFiles()[0].getAbsolutePath() + ".xlsx";
 		} else {
 			path = fileDialog.getFiles()[0].getAbsolutePath();
 		}
-		
+
 		file = new File(path);
-		
+
 		try {
 			FileOutputStream fileOutput = new FileOutputStream(file.getAbsolutePath());
 			workbook.write(fileOutput);
@@ -46,38 +46,22 @@ public class FileController {
 
 	public static void saveXLSXFile(Workbook workbook) throws IOException {
 		LocalDate date = LocalDate.now();
-		//File file = null;
-		String defaultFileName = "Tabela " + date.getMonth().getDisplayName(TextStyle.FULL, new Locale("pt")) + " " + date.getYear() + ".xlsx";
-		//File file = new File("C:\\Users\\pvito\\Documents\\" + defaultFileName);
-		//String path = "%USERPROFILE%\\Documents\\Cartas\\" + date.getMonth().getDisplayName(TextStyle.FULL, new Locale("pt")) + "\\Tabela.xlsx";
-		
-		/**/
-
-		//
-		
-		/*FacesContext facesContext = FacesContext.getCurrentInstance();
-		ExternalContext externalContext = facesContext.getExternalContext();
-		
-		externalContext.responseReset();
-		externalContext.setResponseContentType("application/vnd.ms-excel");
-	    externalContext.setResponseHeader("Content-Disposition", "attachment; filename=\"" + defaultFileName + "\"");
-
-		*/
-		
+		String defaultFileName = "Tabela-" + date.getMonth().getDisplayName(TextStyle.FULL, new Locale("pt")) + "-"
+				+ date.getYear() + ".xlsx";
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        workbook.write(bos);
-        byte[] barray = bos.toByteArray();
-        InputStream is = new ByteArrayInputStream(barray);
-		
+		workbook.write(bos);
+		byte[] barray = bos.toByteArray();
+		InputStream is = new ByteArrayInputStream(barray);
+
 		Faces.sendFile(is, defaultFileName, true);
 	}
-	
-	public static String savePDFFile() {
+
+	/*public static String savePDFFile() {
 		FileDialog fileDialog = new FileDialog(new Frame(), "Salvar", FileDialog.SAVE);
 		fileDialog.setFile("*.pdf");
 		fileDialog.setVisible(true);
 		String path = "";
-		
+
 		if (!fileDialog.getFiles()[0].getAbsolutePath().endsWith(".pdf")) {
 			path = fileDialog.getFiles()[0].getAbsolutePath() + ".pdf";
 		} else {
@@ -85,15 +69,19 @@ public class FileController {
 		}
 
 		return path;
-	}
+	}*/
+
+	/*public static File openXLSXFile() {
+		
+	}*/
 	
-	public static File openXLSXFile() {
+	/*public static File openXLSXFile() {
 		FileDialog fileDialog = new FileDialog(new Frame(), "Abrir", FileDialog.LOAD);
 		fileDialog.setFile("*.xlsx;*xls");
 		fileDialog.setVisible(true);
 		File file = fileDialog.getFiles()[0];
-		
+
 		return file;
-	}
-	
+	}*/
+
 }
