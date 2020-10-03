@@ -7,25 +7,40 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-	<ui:composition template="/template/template.xhtml">
-		<ui:define name="css">
-			<h:outputStylesheet library="css" name="gerarTabela.css" />
-		</ui:define>
-		
-		<ui:define name="cabecalho">
-			Insira os números de CPFs para a geração das cartas
-		</ui:define>
-		
-		<ui:define name="conteudoForm">
-			<div class="containerTextArea">
-				<p:inputTextarea class="inputCPFs" rows="20" cols="50"
-					value="#{gerarTabelaBean.listaDeCpf}" />			
-			</div>
-			<div class="containerBotao">
-				<p:commandButton value="Gerar Tabela"
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="css">
+		<h:outputStylesheet library="css" name="gerarTabela.css" />
+	</ui:define>
+
+	<ui:define name="cabecalho">
+		<p:menubar styleClass="menu">
+			<p:submenu label="Recadastramento" styleClass="menuItem" >
+				<p:submenu label="Aposentados e Pensionistas">
+					<p:menuitem value="Gerar planilha com endereços" url="#" />
+					<p:menuitem value="Gerar cartas (importar planilha)" outcome="/pages/gerarCartas.xhtml?faces-redirect=true" />
+				</p:submenu>
+				<f:facet name="options">
+					<p:commandButton type="button" value="Logout" />
+				</f:facet>
+			</p:submenu>
+		</p:menubar>
+		<h3 id="cabecalhoH3">
+			<h:outputText
+				value="Insira os números de CPFs para a geração
+			das cartas" />
+		</h3>
+	</ui:define>
+
+	<ui:define name="conteudoForm">
+		<div class="containerTextArea">
+			<p:inputTextarea class="inputCPFs" rows="20" cols="50"
+				value="#{gerarTabelaBean.listaDeCpf}" />
+		</div>
+		<div class="containerBotao">
+			<p:commandButton value="Gerar Tabela"
 					action="#{gerarTabelaBean.gerarTabela()}"
-					update=":msgGlobal" ajax="false" />
-			</div>
-		</ui:define>
-	</ui:composition>
+					ajax="false" />
+		</div>
+	</ui:define>
+</ui:composition>
 </html>
