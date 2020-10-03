@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.containerBotao {
+	display: flex;
+	justify-content: center;
+	margin-top: 10%;
+}
+
+.inputBotao {
+	color: #BBE1FA;
+}
