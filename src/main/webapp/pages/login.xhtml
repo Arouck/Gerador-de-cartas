@@ -25,16 +25,24 @@
 				value="Área de login" />
 		</div>
 
-		<div class="containerAutenticacao">
+		<div class="containerAutenticacao" id="containerUsuario">
 			<p:outputLabel class="textoContainer" value="Login:" />
-			<p:inputText class="inputAutenticacao" />
+			<p:inputText id="usuario" class="inputAutenticacao" maxlength="20"
+				size="20" required="true"
+				requiredMessage="o campo login obrigatório"
+				value="#{autenticacaoBean.usuario.username}" />
 		</div>
-		<div class="containerAutenticacao">
+		<div class="containerAutenticacao" id="containerSenha">
 			<p:outputLabel class="textoContainer" value="Senha:" />
-			<p:inputText class="inputAutenticacao" />
+			<p:password id="senha" class="inputAutenticacao" maxlength="20"
+				size="20" required="true"
+				requiredMessage="O campo senha obrigatório"
+				value="#{autenticacaoBean.usuario.senha}" />
 		</div>
 		<div class="botaoLoginContainer">
-			<p:commandButton class="botaoLogin" value="Login" />
+			<p:commandButton class="botaoLogin" value="Login"
+				update=":msgGlobal"
+				actionListener="#{autenticacaoBean.autenticar()}" />
 		</div>
 	</ui:define>
 </ui:composition>
