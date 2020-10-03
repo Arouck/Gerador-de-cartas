@@ -7,32 +7,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-	<ui:composition template="/template/template.xhtml">
-		<ui:define name="css">
-			<h:outputStylesheet library="css" name="login.css" />
-		</ui:define>
-		
-		<ui:define name="cabecalho">
-			<h:outputText value="Bem vindo ao sistema de geração de cartas da PROGEP - UFPA"
-				 />
-		</ui:define>
-		
-		<ui:define name="conteudoForm">
-			<div class="cabecalhoContainer">
-				<h:outputText class="textoContainer headerContainer" value="Área de login" />
-			</div>
-			
-			<div class="containerAutenticacao">
-				<p:outputLabel class="textoContainer" value="Login:"  />
-				<p:inputText class="inputAutenticacao"  />
-			</div>
-			<div class="containerAutenticacao">
-				<p:outputLabel class="textoContainer" value="Senha:"  />
-				<p:inputText class="inputAutenticacao"  />
-			</div>
-			<div class="botaoLoginContainer">
-				<p:commandButton class="botaoLogin" value="Login"  />
-			</div>
-		</ui:define>
-	</ui:composition>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="css">
+		<h:outputStylesheet library="css" name="login.css" />
+	</ui:define>
+
+	<ui:define name="cabecalho">
+		<h3 id="cabecalhoH3">
+			<h:outputText
+				value="Bem vindo ao sistema de geração de cartas da PROGEP - UFPA" />
+		</h3>
+	</ui:define>
+
+	<ui:define name="conteudoForm">
+		<div class="cabecalhoContainer">
+			<h:outputText class="textoContainer headerContainer"
+				value="Área de login" />
+		</div>
+
+		<div class="containerAutenticacao">
+			<p:outputLabel class="textoContainer" value="Login:" />
+			<p:inputText class="inputAutenticacao" />
+		</div>
+		<div class="containerAutenticacao">
+			<p:outputLabel class="textoContainer" value="Senha:" />
+			<p:inputText class="inputAutenticacao" />
+		</div>
+		<div class="botaoLoginContainer">
+			<p:commandButton class="botaoLogin" value="Login" />
+		</div>
+	</ui:define>
+</ui:composition>
 </html>
