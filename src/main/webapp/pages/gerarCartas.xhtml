@@ -9,12 +9,40 @@
 
 <ui:composition template="/template/template.xhtml">
 
+	<ui:define name="css">
+		<h:outputStylesheet library="css" name="gerarCartas.css" />
+	</ui:define>
+
 	<ui:define name="cabecalho">
-			Edite a tabela gerada e clique no botão abaixo para a geração das cartas
-		</ui:define>
+		<p:menubar styleClass="menu">
+			<p:submenu label="Recadastramento" styleClass="menuItem">
+				<p:submenu label="Aposentados e Pensionistas">
+					<p:menuitem value="Gerar planilha com endereços"
+						outcome="/pages/gerarTabela.xhtml?faces-redirect=true" />
+					<p:menuitem value="Gerar cartas (importar planilha)" url="#" />
+				</p:submenu>
+				<f:facet name="options">
+					<p:commandButton type="button" value="Logout" />
+				</f:facet>
+			</p:submenu>
+		</p:menubar>
+		<h3 id="cabecalhoH3">
+			<h:outputText
+				value="Edite a tabela gerada e clique no botão
+			abaixo para a geração das cartas" />
+		</h3>
+	</ui:define>
 
 	<ui:define name="conteudoForm">
-		<p:commandButton value="Gerar Cartas" />
+		<div>
+			<p:fileUpload value="#{gerarCartasBean.file}" mode="simple"
+				skinSimple="simple" allowTypes="/(\.|\/)(xls|xlsx)$/"
+				styleClass="inputBotao" />
+		</div>
+		<div class="containerBotao">
+			<p:commandButton value="Gerar Cartas"
+				actionListener="#{gerarCartasBean.gerarCartas()}" ajax="false" />
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
