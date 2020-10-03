@@ -1,8 +1,7 @@
 package util;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +15,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.primefaces.model.file.UploadedFile;
 
 import controller.FileController;
 import domain.Pessoa;
@@ -130,7 +130,36 @@ public class XLSXUtil {
 
 	}
 
-	public static List<Pessoa> lerArquivoXLSX() throws IOException {
+	public static List<Pessoa> lerArquivoXLSX(UploadedFile file) throws IOException {
+		List<Pessoa> pessoas = new ArrayList<>();
+
+		InputStream inputStream = file.getInputStream();
+
+		XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+		XSSFSheet sheet = workbook.getSheetAt(0);
+
+		Iterator<Row> rows = sheet.iterator();
+
+		rows.next();
+
+		while (rows.hasNext()) {
+			Row row = rows.next();
+
+			Iterator<Cell> cells = row.cellIterator();
+
+			Pessoa pessoa = new Pessoa(cells.next().toString(), cells.next().toString(), cells.next().toString(),
+					cells.next().toString(), cells.next().toString(), cells.next().toString(), cells.next().toString(),
+					cells.next().toString());
+
+			pessoas.add(pessoa);
+		}
+
+		workbook.close();
+		inputStream.close();
+
+		return pessoas;
+	}
+	/*public static List<Pessoa> lerArquivoXLSX() throws IOException {
 		List<Pessoa> pessoas = new ArrayList<>();
 
 		File file = FileController.openXLSXFile();
@@ -159,6 +188,6 @@ public class XLSXUtil {
 		fileInput.close();
 
 		return pessoas;
-	}
+	}*/
 
 }
