@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="css">
+		<h:outputStylesheet library="css" name="cadastro.css" />
+	</ui:define>
+
+	<ui:define name="cabecalho">
+		<p:menubar styleClass="menu">
+			<p:submenu label="Recadastramento" styleClass="menuItem">
+				<p:submenu label="Aposentados e Pensionistas">
+					<p:menuitem value="Gerar planilha com endereços"
+						outcome="/pages/gerarTabela.xhtml?faces-redirect=true" />
+					<p:menuitem value="Gerar cartas (importar planilha)"
+						outcome="/pages/gerarCartas.xhtml?faces-redirect=true" />
+				</p:submenu>
+			</p:submenu>
+			<p:menuitem value="Cadastrar Novo Usuário" url="#"
+				styleClass="menuItem" style="margin-left: 10%; width: 20vh;"
+				rendered="#{autenticacaoBean.temPermissao()}" />
+			<f:facet name="options">
+				<p:commandButton value="Logout" actionListener="#{autenticacaoBean.logout()}" />
+			</f:facet>
+		</p:menubar>
+		<h3 id="cabecalhoH3">
+			<h:outputText value="Cadastro de usuários" />
+		</h3>
+	</ui:define>
+
+	<ui:define name="conteudoForm">
+
+		<div class="containerCadastro">
+			<p:outputLabel class="textoContainer" value="Nome de usuário:" />
+			<p:inputText id="usuario" class="inputAutenticacao" maxlength="20"
+				size="20" required="true"
+				requiredMessage="o campo nome de usuário é obrigatório"
+				value="#{cadastroBean.usuario.username}" />
+		</div>
+		<div class="containerCadastro">
+			<p:outputLabel class="textoContainer" value="Senha:" />
+			<p:password id="senha" class="inputAutenticacao" maxlength="20"
+				size="20" required="true"
+				requiredMessage="O campo senha é obrigatório"
+				value="#{cadastroBean.usuario.senha}" />
+		</div>
+		<div class="containerCadastro">
+			<p:outputLabel class="textoContainer" value="Papel:" />
+			<p:selectOneRadio value="#{cadastroBean.usuario.papel}" id="papel"
+				required="true" requiredMessage="O campo papel é obrigatório">
+				<f:selectItem itemLabel="Administrador" itemValue="A" />
+				<f:selectItem itemLabel="Cliente" itemValue="C" />
+			</p:selectOneRadio>
+		</div>
+		<div class="botaoCadastroContainer">
+			<p:commandButton class="botãoCadastro" value="Cadastrar"
+				actionListener="#{cadastroBean.cadastrarNovoUsuario()}"
+				update=":msgGlobal @form" />
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
