@@ -6,6 +6,7 @@ import java.security.GeneralSecurityException;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
@@ -43,10 +44,23 @@ public class AutenticacaoBean {
 				iniciar();
 				return;
 			}
-			
+
 			Faces.redirect("./pages/gerarTabela.xhtml");
 		} catch (IOException | GeneralSecurityException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		Faces.navigate("/pages/login.xhtml?faces-redirect=true");
+	}
+
+	public boolean temPermissao() {
+		if (usuarioLogado.getPapel().equals('A')) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
