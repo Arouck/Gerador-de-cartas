@@ -8,6 +8,7 @@
 		
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>domain.Pessoa</class>
+		<class>domain.Usuario</class>
 		
 		<properties>
 			<property name="hibernate.dialect"
