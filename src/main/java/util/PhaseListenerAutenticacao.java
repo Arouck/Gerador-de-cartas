@@ -14,13 +14,13 @@ public class PhaseListenerAutenticacao implements PhaseListener {
 	@Override
 	public void afterPhase(PhaseEvent event) {
 		String paginaAtual = Faces.getViewId();
-		
-		if(!paginaAtual.contains("login.xhtml")) {
+
+		if (!paginaAtual.contains("login.xhtml")) {
 			AutenticacaoBean autenticacaoBean = Faces.getSessionAttribute("autenticacaoBean");
 			if (autenticacaoBean != null && autenticacaoBean.getUsuarioLogado() != null) {
-				
+
 			} else {
-				Faces.navigate("/pages/login.xhtml?faces-redirect=true");				
+				Faces.navigate("/pages/login.xhtml?faces-redirect=true");
 			}
 		}
 	}
