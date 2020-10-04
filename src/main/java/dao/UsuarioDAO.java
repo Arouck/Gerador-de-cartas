@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import domain.Usuario;
 
 public class UsuarioDAO extends GenericDAO<Usuario> {
@@ -22,25 +25,25 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 		}
 	}
 
-	/*public Usuario buscarPorUsuario(String username) {
+	@SuppressWarnings("unchecked")
+	public List<String> buscarNomesDeUsuario() {
 		try {
 			if (!em.isOpen()) {
 				instanciarEm();
 			}
 			abrirSessao();
-			Usuario usuario = (Usuario) em
-					.createQuery("FROM " + Usuario.class.getName() + " WHERE username = '" + username + "'")
-					.getSingleResult();
-			return usuario;
-		} catch (RuntimeException ex) {
-			if (em.getTransaction() != null) {
-				fazerRollback();
+			List<Usuario> listaDeUsuarios = em.createQuery("FROM " + Usuario.class.getName()).getResultList();
+			List<String> listaDeNomesDeUsuarios = new ArrayList<>();
+			for(Usuario usuario : listaDeUsuarios) {
+				listaDeNomesDeUsuarios.add(usuario.getUsername());
 			}
+			return listaDeNomesDeUsuarios;
+		} catch (RuntimeException ex) {
 			throw ex;
 		} finally {
 			fecharSessao();
 		}
-	}*/
+	}
 
 	public Usuario buscarPorUsuario(String username) {
 		try {
