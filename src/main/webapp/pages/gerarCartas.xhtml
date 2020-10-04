@@ -21,10 +21,14 @@
 						outcome="/pages/gerarTabela.xhtml?faces-redirect=true" />
 					<p:menuitem value="Gerar cartas (importar planilha)" url="#" />
 				</p:submenu>
-				<f:facet name="options">
-					<p:commandButton type="button" value="Logout" />
-				</f:facet>
 			</p:submenu>
+			<p:menuitem value="Cadastrar Novo Usuário"
+				outcome="/pages/cadastro.xhtml?faces-redirect=true"
+				styleClass="menuItem" style="margin-left: 10%; width: 20vh;"
+				rendered="#{autenticacaoBean.temPermissao()}" />
+			<f:facet name="options">
+				<p:commandButton value="Logout" actionListener="#{autenticacaoBean.logout()}" />
+			</f:facet>
 		</p:menubar>
 		<h3 id="cabecalhoH3">
 			<h:outputText
