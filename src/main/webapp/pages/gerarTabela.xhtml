@@ -14,15 +14,20 @@
 
 	<ui:define name="cabecalho">
 		<p:menubar styleClass="menu">
-			<p:submenu label="Recadastramento" styleClass="menuItem" >
+			<p:submenu label="Recadastramento" styleClass="menuItem">
 				<p:submenu label="Aposentados e Pensionistas">
 					<p:menuitem value="Gerar planilha com endereços" url="#" />
-					<p:menuitem value="Gerar cartas (importar planilha)" outcome="/pages/gerarCartas.xhtml?faces-redirect=true" />
+					<p:menuitem value="Gerar cartas (importar planilha)"
+						outcome="/pages/gerarCartas.xhtml?faces-redirect=true" />
 				</p:submenu>
-				<f:facet name="options">
-					<p:commandButton type="button" value="Logout" />
-				</f:facet>
 			</p:submenu>
+			<p:menuitem value="Cadastrar Novo Usuário"
+				outcome="/pages/cadastro.xhtml?faces-redirect=true"
+				styleClass="menuItem" style="margin-left: 10%; width: 20vh;"
+				rendered="#{autenticacaoBean.temPermissao()}" />
+			<f:facet name="options">
+				<p:commandButton value="Logout" actionListener="#{autenticacaoBean.logout()}" />
+			</f:facet>
 		</p:menubar>
 		<h3 id="cabecalhoH3">
 			<h:outputText
@@ -38,8 +43,7 @@
 		</div>
 		<div class="containerBotao">
 			<p:commandButton value="Gerar Tabela"
-					action="#{gerarTabelaBean.gerarTabela()}"
-					ajax="false" />
+				action="#{gerarTabelaBean.gerarTabela()}" ajax="false" />
 		</div>
 	</ui:define>
 </ui:composition>
