@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.security.GeneralSecurityException;
 
 import javax.annotation.PostConstruct;
@@ -15,9 +16,10 @@ import dao.UsuarioDAO;
 import domain.Usuario;
 import util.AutenticacaoUtil;
 
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
-public class AutenticacaoBean {
+public class AutenticacaoBean implements Serializable {
 
 	private Usuario usuario;
 	private Usuario usuarioLogado;
