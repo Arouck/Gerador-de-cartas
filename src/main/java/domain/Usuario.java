@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Usuario {
@@ -15,11 +14,9 @@ public class Usuario {
 	private Integer id;
 	
 	@Column
-	@Size(max = 20, min = 3, message = "O nome de usuário deve ter entre 3 e 20 caracteres")
 	private String username;
 	
 	@Column
-	@Size(max = 20, min = 8, message = "O campo senha deve ter entre 8 e 20 caracteres")
 	private String senha;
 	
 	@Column
