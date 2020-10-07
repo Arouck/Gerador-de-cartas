@@ -14,7 +14,7 @@ public class PessoaDAO extends GenericDAO<Pessoa> {
 			}
 			abrirSessao();
 			List<Pessoa> pessoas = em.createQuery(
-					"FROM " + Pessoa.class.getName() + " WHERE operacao <> 'delete' AND cpf IN(" + listaDeCPF + ")")
+					"FROM " + Pessoa.class.getName() + " WHERE  cpf IN(" + listaDeCPF + ")")
 					.getResultList();
 			return pessoas;
 		} catch (RuntimeException ex) {
