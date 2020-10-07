@@ -30,7 +30,7 @@
 				<p:commandButton value="Logout" actionListener="#{autenticacaoBean.logout()}" />
 			</f:facet>
 		</p:menubar>
-		<h3 id="cabecalhoH3">
+		<h3 id="cabecalhoTexto">
 			<h:outputText
 				value="Edite a tabela gerada e clique no botão
 			abaixo para a geração das cartas" />
@@ -40,12 +40,13 @@
 	<ui:define name="conteudoForm">
 		<div>
 			<p:fileUpload value="#{gerarCartasBean.file}" mode="simple"
-				skinSimple="simple" allowTypes="/(\.|\/)(xls|xlsx)$/"
+				skinSimple="simple"
 				styleClass="inputBotao" />
 		</div>
 		<div class="containerBotao">
 			<p:commandButton value="Gerar Cartas"
-				actionListener="#{gerarCartasBean.gerarCartas()}" ajax="false" />
+				actionListener="#{gerarCartasBean.gerarCartas()}" ajax="false"
+				update=":msgGlobal" />
 		</div>
 	</ui:define>
 </ui:composition>
