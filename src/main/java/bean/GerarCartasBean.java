@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.omnifaces.util.Messages;
 import org.primefaces.model.file.UploadedFile;
 
 import domain.Pessoa;
@@ -20,8 +21,12 @@ public class GerarCartasBean implements Serializable {
 	private UploadedFile file;
 	
 	public void gerarCartas() throws IOException {
-		List<Pessoa> pessoas = XLSXUtil.lerArquivoXLSX(file);
-		PDFUtil.gerarDocumento(pessoas);
+		if(file.getFileName().endsWith(".xlsx") || file.getFileName().endsWith(".xls")) {
+			List<Pessoa> pessoas = XLSXUtil.lerArquivoXLSX(file);
+			PDFUtil.gerarDocumento(pessoas);
+		} else {
+			Messages.addGlobalError("É obrigatório que a planilha importada possua a extensão .xlsx ou .xls");
+		}
 	}
 
 	public UploadedFile getFile() {
