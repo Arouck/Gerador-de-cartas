@@ -47,12 +47,12 @@ body {
 	background-color: #1B262C;
 }
 
-#cabecalhoH3 {
+#cabecalhoTexto {
 	color: #3282B8;
 	margin-top: 10vh;
 	font-size: 2em;
 	text-align: center;
-	margin-bottom: 5%;
+	margin-bottom: 5vh;
 }
 
 #containerForm {
