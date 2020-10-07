@@ -56,6 +56,21 @@ public class Pessoa extends GenericDomain {
 		this.uf = uf;
 	}
 
+	public Pessoa(String nome, String endereco, String cep, String numeroendereco, String bairro, String cidade,
+			String complemento, String uf, String operacao, String mensagemErro) {
+		super();
+		this.nome = nome;
+		this.endereco = endereco;
+		this.cep = cep;
+		this.numeroendereco = numeroendereco;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.complemento = complemento;
+		this.uf = uf;
+		this.operacao = operacao;
+		this.mensagemErro = mensagemErro;
+	}
+
 	public String getCep() {
 		return cep;
 	}
@@ -114,6 +129,22 @@ public class Pessoa extends GenericDomain {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getOperacao() {
+		return operacao;
+	}
+
+	public void setOperacao(String operacao) {
+		this.operacao = operacao;
 	}
 
 }
