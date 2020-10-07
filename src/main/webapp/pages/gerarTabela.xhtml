@@ -26,25 +26,34 @@
 				styleClass="menuItem" style="margin-left: 10%; width: 20vh;"
 				rendered="#{autenticacaoBean.temPermissao()}" />
 			<f:facet name="options">
-				<p:commandButton value="Logout" actionListener="#{autenticacaoBean.logout()}" />
+				<p:commandButton value="Logout"
+					actionListener="#{autenticacaoBean.logout()}" />
 			</f:facet>
 		</p:menubar>
-		<h3 id="cabecalhoH3">
+		<div id="cabecalhoTexto">
 			<h:outputText
 				value="Insira os números de CPFs para a geração
 			das cartas" />
-		</h3>
+		</div>
+		<div class="tutorialTexto">
+			<h:outputText
+				value="Insira os CPFs no campo, separando-os por uma quebra de linha, como mostrado abaixo" />
+			<h:outputText
+				value="Não é obrigatório o uso de pontuação" />
+		</div>
 	</ui:define>
 
 	<ui:define name="conteudoForm">
 		<div class="containerTextArea">
 			<p:inputTextarea class="inputCPFs" rows="20" cols="50"
-				value="#{gerarTabelaBean.listaDeCpf}" />
+				value="#{gerarTabelaBean.listaDeCpf}"
+				placeholder="#{gerarTabelaBean.gerarPlaceholder()}" />
 		</div>
 		<div class="containerBotao">
 			<p:commandButton value="Gerar Tabela"
 				action="#{gerarTabelaBean.gerarTabela()}" ajax="false" />
 		</div>
 	</ui:define>
+
 </ui:composition>
 </html>
