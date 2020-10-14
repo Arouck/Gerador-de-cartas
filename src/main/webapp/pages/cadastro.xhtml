@@ -26,7 +26,8 @@
 				styleClass="menuItem" style="margin-left: 10%; width: 20vh;"
 				rendered="#{autenticacaoBean.temPermissao()}" />
 			<f:facet name="options">
-				<p:commandButton value="Logout" actionListener="#{autenticacaoBean.logout()}" />
+				<p:commandButton value="Logout" actionListener="#{autenticacaoBean.logout()}"
+					icon="pi pi-power-off" />
 			</f:facet>
 		</p:menubar>
 		<div id="cabecalhoTexto">
@@ -61,7 +62,8 @@
 		<div class="botaoCadastroContainer">
 			<p:commandButton class="botãoCadastro" value="Cadastrar"
 				actionListener="#{cadastroBean.cadastrarNovoUsuario()}"
-				update=":msgGlobal @form" />
+				update=":msgGlobal @form"
+				icon="pi pi-user-plus" />
 		</div>
 	</ui:define>
 </ui:composition>

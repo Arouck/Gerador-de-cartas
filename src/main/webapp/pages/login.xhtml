@@ -40,9 +40,8 @@
 				value="#{autenticacaoBean.usuario.senha}" />
 		</div>
 		<div class="botaoLoginContainer">
-			<p:commandButton class="botaoLogin" value="Login"
-				update=":msgGlobal"
-				actionListener="#{autenticacaoBean.autenticar()}" />
+			<p:commandButton class="botaoLogin" value="Login" update=":msgGlobal"
+				actionListener="#{autenticacaoBean.autenticar()}" icon="pi pi-user" />
 		</div>
 	</ui:define>
 </ui:composition>
