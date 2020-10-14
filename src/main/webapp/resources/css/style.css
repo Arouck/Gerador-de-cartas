@@ -90,3 +90,8 @@ body {
 .ui-menuitem-text {
 	color: #FFF;
 }
+
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-left .ui-icon, .ui-button-text-icon-right .ui-icon {
+	color: #0F4C75;
+	font-size: 1em;
+}
